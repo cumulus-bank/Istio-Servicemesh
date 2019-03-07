@@ -47,3 +47,15 @@ spec:
       attempts: 3
       perTryTimeout: 2s
     timeout: 5s
+  - match:
+    - uri:
+        prefix: /smssvc/
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: smssvc.default.svc.cluster.local
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+    timeout: 5s
