@@ -57,5 +57,29 @@ spec:
         host: smssvc.default.svc.cluster.local
     retries:
       attempts: 3
+      perTryTimeout: 5s
+    timeout: 7s
+  - match:
+    - uri:
+        prefix: /aisvc/
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: aisvc.default.svc.cluster.local
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+    timeout: 5s
+  - match:
+    - uri:
+        prefix: /odmbanksvc/
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: odmbanksvc.default.svc.cluster.local
+    retries:
+      attempts: 3
       perTryTimeout: 2s
     timeout: 5s

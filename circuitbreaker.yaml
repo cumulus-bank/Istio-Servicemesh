@@ -5,6 +5,8 @@ metadata:
 spec:
   host: authsvc
   trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
     connectionPool:
       tcp:
         maxConnections: 100
@@ -24,6 +26,8 @@ metadata:
 spec:
   host: accountsvc
   trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
     connectionPool:
       tcp:
         maxConnections: 100
@@ -44,6 +48,50 @@ metadata:
 spec:
   host: smssvc
   trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 1024
+        maxRequestsPerConnection: 1
+    outlierDetection:
+      consecutiveErrors: 1
+      interval: 1s
+      baseEjectionTime: 3m
+      maxEjectionPercent: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aisvc
+spec:
+  host: aisvc
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 1024
+        maxRequestsPerConnection: 1
+    outlierDetection:
+      consecutiveErrors: 1
+      interval: 1s
+      baseEjectionTime: 3m
+      maxEjectionPercent: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: odmbanksvc
+spec:
+  host: odmbanksvc
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
     connectionPool:
       tcp:
         maxConnections: 100
