@@ -25,12 +25,12 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /authsvc/
+        prefix: /aisvc/
     rewrite:
       uri: "/"
     route:
     - destination:
-        host: authsvc.default.svc.cluster.local
+        host: aisvc.cumulusbank.svc.cluster.local
     retries:
       attempts: 3
       perTryTimeout: 2s
@@ -42,43 +42,31 @@ spec:
       uri: "/"
     route:
     - destination:
-        host: accountsvc.default.svc.cluster.local
+        host: accountsvc.cumulusbank.svc.cluster.local
     retries:
       attempts: 3
       perTryTimeout: 2s
     timeout: 5s
   - match:
     - uri:
-        prefix: /smssvc/
+        prefix: /authsvc/
     rewrite:
       uri: "/"
     route:
     - destination:
-        host: smssvc.default.svc.cluster.local
-    retries:
-      attempts: 3
-      perTryTimeout: 5s
-    timeout: 7s
-  - match:
-    - uri:
-        prefix: /aisvc/
-    rewrite:
-      uri: "/"
-    route:
-    - destination:
-        host: aisvc.default.svc.cluster.local
+        host:  authsvc.cumulusbank.svc.cluster.local
     retries:
       attempts: 3
       perTryTimeout: 2s
     timeout: 5s
   - match:
     - uri:
-        prefix: /odmbanksvc/
+        prefix: /odmsvc/
     rewrite:
       uri: "/"
     route:
     - destination:
-        host: odmbanksvc.default.svc.cluster.local
+        host:  odmbanksvc.cumulusbank.svc.cluster.local
     retries:
       attempts: 3
       perTryTimeout: 2s

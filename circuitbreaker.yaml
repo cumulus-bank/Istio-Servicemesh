@@ -1,9 +1,9 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: authsvc
+  name: auth-svc
 spec:
-  host: authsvc
+  host: auth-svc.cumulusbank
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -22,9 +22,9 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: accountsvc
+  name: account-svc
 spec:
-  host: accountsvc
+  host: account-svc.cumulusbank
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -44,9 +44,9 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: smssvc
+  name: sms-svc
 spec:
-  host: smssvc
+  host: sms-svc.cumulusbank
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -65,9 +65,9 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: aisvc
+  name: ai-svc
 spec:
-  host: aisvc
+  host: ai-svc.cumulusbank
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -82,24 +82,24 @@ spec:
       interval: 1s
       baseEjectionTime: 3m
       maxEjectionPercent: 100
----
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: odmbanksvc
-spec:
-  host: odmbanksvc
-  trafficPolicy:
-    loadBalancer:
-      simple: ROUND_ROBIN
-    connectionPool:
-      tcp:
-        maxConnections: 100
-      http:
-        http1MaxPendingRequests: 1024
-        maxRequestsPerConnection: 1
-    outlierDetection:
-      consecutiveErrors: 1
-      interval: 1s
-      baseEjectionTime: 3m
-      maxEjectionPercent: 100
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# metadata:
+#   name: odmbanksvc
+# spec:
+#   host: odmbanksvc
+#   trafficPolicy:
+#     loadBalancer:
+#       simple: ROUND_ROBIN
+#     connectionPool:
+#       tcp:
+#         maxConnections: 100
+#       http:
+#         http1MaxPendingRequests: 1024
+#         maxRequestsPerConnection: 1
+#     outlierDetection:
+#       consecutiveErrors: 1
+#       interval: 1s
+#       baseEjectionTime: 3m
+#       maxEjectionPercent: 100
