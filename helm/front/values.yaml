@@ -15,7 +15,7 @@ env:
   updateURL: ""
   interval: "1000"
   maxReplayOffset: "43200"
-  updateURL: "http://localhost:9091/graph"
+  updateURL: "http://md-cupromviz-cumulusbankpromviz-promviz-gcp1-promviz.default:9091/graph"
 
 image:
   repository: mjhddevlion/promviz-front
