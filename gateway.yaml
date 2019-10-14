@@ -8,7 +8,7 @@ spec:
   servers:
   - port:
       number: 80
-      name: http
+      name: http1
       protocol: HTTP
     hosts:
     - "*"
@@ -45,8 +45,8 @@ spec:
         host: accountsvc.cumulusbank.svc.cluster.local
     retries:
       attempts: 3
-      perTryTimeout: 2s
-    timeout: 5s
+      perTryTimeout: 6s
+    timeout: 6s
   - match:
     - uri:
         prefix: /authsvc/
